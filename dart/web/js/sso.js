@@ -46,10 +46,13 @@ $.getJSON("/api/1/auth/providers",
     function(data) {
         console.log("Got these providers: "+JSON.stringify(data, null, 2));
         data.forEach(function(provider) {
-            $("#sso_buttons").append("<button class=\"btn btn-lg btn-primary btn-block\" id=\"sso_"+provider.name+"\" name=\"submit\" type=\"submit\">"+provider.name+"</button>");
+            if (provider.prettyName == null) {
+                  provider.prettyName = provider.name
+            }
+            $("#sso_buttons").append("<button class=\"btn btn-lg btn-primary btn-block\" id=\"sso_"+provider.name+"\" name=\"submit\" type=\"submit\">"+provider.prettyName+"</button>");
             $("#sso_"+provider.name).click(function() {
                 var url = create_url(provider);
-                $("#login_div").replaceWith("<h3>Proceeding to "+provider.name+"...</h3>");
+                $("#login_div").replaceWith("<h3>Proceeding to "+provider.prettyName+"...</h3>");
                 window.location.replace(url);
             });
         });

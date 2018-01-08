@@ -1,3 +1,9 @@
+aws_access_key_id = ASIAJHHLGU7YY5ULJFVA
+aws_secret_access_key = ubvvXDDm4cEDH19zJEzXpvNlZh+69bTL0qVOnnX/
+aws_session_token = FQoDYXdzEE0aDDDrlIdZnWOI1i3lTiKSA0SuSJHzY3bVlXi+07ksDGqfMQGEOndJ9s+ZQKqfEdiCG4W7xw1GhykP4seWtL+6dG/J9VkxbDrIndxFLNu2vMYXUXzWIuFrmXxYe9wvqXQvQny0Z8fFMz03E5Msa7ru6h+r+DzneX7wjAucvNc+1QirLwPrhh0KGGk7Y41E5ayia4DnPxx3ZW88j87pIh3gMiT2ZrmsgH+2dRWAhAbowGJ6qTOgHd9jS9zHUp3eqqbFxbvALXxYdXuO+Y5+tUlIPnWUC6ovJb3PxjX79ouuWPe1eZfc/8Rhw9WyBfanEGkZy2n1hOU9P7KG5dmuQgKJqGHVUSBON0VS9AJD+MJDeTlNIZ40+5JDtw4FKa2KSPRT6oAEI+c22Cv+izAhYTPvbPVTWOJChWpPC9/R49+L7HxS3H+7KnfHl4bMUe/aOwpJJWaJarN/GJOGgHlmMkrTUulmExZW2T4HtHim2/lzCKru5J2GwZJZacndFwmG/ditAIvTvLd3OGXFpd5+HG7VvU2mZj4ahiX2jvFRKMOjND0Tbij+6rTSBQ==
+aws_security_token = FQoDYXdzEE0aDDDrlIdZnWOI1i3lTiKSA0SuSJHzY3bVlXi+07ksDGqfMQGEOndJ9s+ZQKqfEdiCG4W7xw1GhykP4seWtL+6dG/J9VkxbDrIndxFLNu2vMYXUXzWIuFrmXxYe9wvqXQvQny0Z8fFMz03E5Msa7ru6h+r+DzneX7wjAucvNc+1QirLwPrhh0KGGk7Y41E5ayia4DnPxx3ZW88j87pIh3gMiT2ZrmsgH+2dRWAhAbowGJ6qTOgHd9jS9zHUp3eqqbFxbvALXxYdXuO+Y5+tUlIPnWUC6ovJb3PxjX79ouuWPe1eZfc/8Rhw9WyBfanEGkZy2n1hOU9P7KG5dmuQgKJqGHVUSBON0VS9AJD+MJDeTlNIZ40+5JDtw4FKa2KSPRT6oAEI+c22Cv+izAhYTPvbPVTWOJChWpPC9/R49+L7HxS3H+7KnfHl4bMUe/aOwpJJWaJarN/GJOGgHlmMkrTUulmExZW2T4HtHim2/lzCKru5J2GwZJZacndFwmG/ditAIvTvLd3OGXFpd5+HG7VvU2mZj4ahiX2jvFRKMOjND0Tbij+6rTSBQ==
+
+[saml]
 """
 .. module: security_monkey.sso.views
     :platform: Unix
@@ -441,6 +447,7 @@ class Providers(Resource):
             elif provider == "onelogin":
                 active_providers.append({
                     'name': 'OneLogin',
+                    'prettyName': current_app.config.get("ONELOGIN_SSO_PROVIDER_NAME") or 'OneLogin',
                     'authorizationEndpoint': api.url_for(OneLogin)
                 })
             else:
